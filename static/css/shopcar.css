@@ -1,0 +1,28 @@
+.header_middle_right{padding-right:54px; height:50px; }
+.header_middle_right .step{float:left; width:20px; height:20px; background:#ccc;color:#fff; text-align: center; line-height:20px; font-weight:bold; position:relative; margin-left:108px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;}
+.header_middle_right .step:before, .header_middle_right .step:after{content: ''; display: inline-block; width:54px; height:0; border-bottom:3px solid #ccc; position:absolute; top:50%; }
+.header_middle_right .step:before{left:-54px; }
+.header_middle_right .step:after{right:-54px;}
+.header_middle_right .step span{display:block; color:#ccc; width:200px; line-height:30px; position:absolute; left:-88px;}
+.header_middle_right .step_red{background:#e21c01; }
+.header_middle_right .step_red:before, .header_middle_right .step_red:after{border-color:#e21c01; }
+
+.shopcar_tit{height:30px; font-size:16px; line-height:30px; font-weight:bold; }
+.shopcar_con{border:1px solid #ccc; }
+.shopcar_head{height:30px; line-height:30px; line-height:30px; text-align:center; }
+.shopcar_con .shopcar_item{float:left; width:14%; text-align:center; }
+.shopcar_con .pro_name{width:28%; }
+.shopcar_con .pro_name div{margin-left:5%; }
+.shopcar_pro_con{border-bottom:1px solid #CCCCCC; padding:5px 0; }
+.shopcar_con .shopcar_pro_img img{width:90px; height:100px; display:block; }
+.shopcar_con .shopcar_pro_name a{display:block; line-height:37px; }
+.des_number{margin:0 auto; }
+/*.all_choose label span{display:inline-block; padding-left:5px; line-height:20px; vertical-align: bottom; }*/
+.shopcar_cont{padding:25px 30px;}
+.shopcar_cont_money{margin-bottom:16px; }
+.shopcar_cont_money i{font-size:14px; font-style:normal; }
+.shopcar_cont_money span{font:24px/1 bold; color:#e21c01; }
+.shopcar_cont_btn input{width:165px; height:33px; line-height:33px; font-size:18px; background:#e21c01; color:#fff; margin-left:20px; }

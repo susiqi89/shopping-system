@@ -1,0 +1,334 @@
+/*header*/
+.header_top{
+    height: 30px;
+}
+.header_top_right li{
+    float: left;
+    padding: 0 8px;
+    line-height: 28px;
+    border:1px solid transparent;
+    position: relative;
+}
+.header_top_right li:after{
+    content: '';
+    display: inline-block;
+    height: 12px;
+    width: 1px;
+    background: #dddddd;
+    position: absolute;
+    top: 8px;
+    right: -1px;
+}
+.header_top_right li:last-child:after{
+    background: transparent;
+}
+.header_middle{
+    padding: 20px 0;
+}
+.header_middle_right{
+
+}
+.header_seach_box{
+
+}
+header .search_txt{
+    width: 350px;
+    height: 35px;
+    padding-left: 12px;
+    background: #ffffff;
+    vertical-align: top;
+    border: 2px solid #e21c01;
+    border-right: none;
+    -webkit-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+}
+header .search_btn{
+    width: 70px;
+    height: 35px;
+    background: #e21c01;
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+.header_shop{
+    width: 145px;
+    height: 35px;
+    margin-left: 70px;
+    border: 1px solid #dfdfdf;
+    line-height: 34px;
+}
+.shoptxt{
+    padding: 0 10px;
+}
+nav{
+    height: 35px;
+    background: #e21c01;
+}
+nav .inner{
+    position: relative;
+}
+.nav_menu>li{
+    float: left;
+}
+.nav_menu>li>a{
+    display: block;
+    padding: 0 30px;
+    line-height: 35px;
+    color: #ffffff;
+    font-size: 14px;
+}
+.nav_menu>li:first-child{
+    width: 220px;
+}
+.nav_menu h3{
+    line-height: 35px;
+}
+.nav_menu .glyphicon{
+    position: relative;
+    right: -10px;
+}
+.shop_class_show{
+    background: rgba(226, 28, 1, 0.8);
+    width: 220px;
+    height: 420px;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    z-index: 3;
+}
+.nav_list_area{
+    border-top: 1px solid rgba(226, 28, 1, 0.2);
+    border-bottom:1px solid #e21c01;
+    margin: 0 15px;
+    padding: 18px 0;
+}
+.shop_class_show>ul>li:last-child .nav_list_area{
+    border: none;
+}
+.nav_list_area h5{
+    line-height: 25px;
+
+}
+.nav_list_area span{
+    display: inline-block;
+    line-height: 20px;
+    font-size: 12px;
+    margin-right: 12px;
+}
+.nav_list_con{
+    display: none;
+    background: #ffffff;
+    width: 620px;
+    padding: 30px 65px 30px 40px;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    height:419px;
+    border-bottom:1px solid #e21c01;
+    border-right:1px solid #e21c01;
+}
+.nav_list_fenle{
+    padding-bottom: 10px;
+}
+.nav_list_con h4{
+    line-height: 32px;
+}
+.nav_list_fenle ul li{
+    float: left;
+    position: relative;
+}
+.nav_list_fenle ul li:after, .nav_list_rexiao ul li span:after{
+    content: '';
+    display: inline-block;
+    margin: 0 12px;
+    height: 14px;
+    width: 0;
+    border-right: 1px solid #656565;
+    position: relative;
+    right: 0;
+    top: 2px;
+}
+.nav_list_fenle ul li:last-child:after{
+    border-right: 1px solid transparent;
+    margin: 0;
+}
+.nav_list_con ul li a{
+    display: inline-block;
+    line-height: 38px;
+}
+.shop_class_show>ul>li:hover .nav_list_area{
+    border-top-color: transparent;
+    border-left: 1px solid #e21c01;
+    background: #ffffff;
+    color: #656565;
+    margin: 0;
+    padding: 18px 15px;
+}
+.shop_class_show>ul>li:hover .nav_list_con{
+    display: block;
+}
+
+/*banner*/
+.banner{
+    height: 420px;
+    padding-left: 220px;
+    background: #e21c01;
+}
+
+/*shopcon*/
+section .shopcon{
+    padding:50px 0;
+}
+section .shopcon .shopcon_men{
+    height: 426px;
+    overflow:hidden;
+}
+section .shopcon_left_title{
+    width: 220px;
+    height: 405px;
+    position: relative;
+}
+section .shopcon_left_txt{
+    position: absolute;
+    left: 23px;
+    top: 0;
+}
+section .shopcon_left_txt h5{
+    padding-top: 26px;
+}
+section .shopcon_left_txt p{
+    padding-top: 17px;
+}
+section .shopcon_left_txt a{
+    display: block;
+    padding-top: 36px;
+}
+section .shopcon_con_list{
+    width: 980px;
+    overflow: hidden;
+}
+section .shopcon_con_list li{
+    float: left;
+    margin: 0 0 18px 20px;
+    position: relative;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+section .shopcon_con_list1{
+    width: 225px;
+    height: 195px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+section .shopcon_con_list1 .img{
+    width: 225px;
+    height: 143px;
+    text-align: center;
+    overflow: hidden;
+}
+section .shopcon_con_list1 .img img{
+    height:100%;
+}
+section .shopcon_conlist_box{
+    width: 100%;
+    height: 105px;
+    background: #fff;
+    position: absolute;
+    padding: 0 20px;
+    top: 134px;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+section .shopcon_conlist_box h4{
+    width: 100%;
+    display: inline-block;
+    padding-top: 10px;
+    line-height: 25px;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+section .shopcon_conlist_bottom{
+    width: 100%;
+    height: 21px;
+    background: #ffffff;
+    line-height: 18px;
+    padding: 0 20px;
+    position: absolute;
+    bottom: 0;
+}
+section .shopcon_con_list li:hover{
+    box-shadow:0 15px 30px #a9a9a9;
+    -webkit-transform: translate3d(0, -3px, 0);
+    -moz-transform: translate3d(0, -3px, 0);
+    -ms-transform: translate3d(0, -3px, 0);
+    -o-transform: translate3d(0, -3px, 0);
+    transform: translate3d(0, -3px, 0);
+}
+section .shopcon_con_list li:hover .shopcon_conlist_box{
+    top: 90px;
+}
+
+/*footer*/
+.footer{
+    background: rgba(56, 54, 55, 1);
+    padding: 0 15px;
+}
+footer .inner{
+    padding: 39px 0;
+}
+footer .ourinfo p:first-child a{
+    display: inline-block;
+    padding: 0 10px;
+    color: #a5a5a5;
+}
+footer .ourinfo p:first-child a:first-child{
+    padding-left: 0;
+}
+footer .footer_right .weixin{
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    background: url("../images/Icon.png") no-repeat left top;
+    margin-left: 50px;
+    position: relative;
+    vertical-align: middle;
+}
+footer .footer_right .weixinerweima{
+    width: 118px;
+    height: 127px;
+    background: #CCCCCC;
+    position: absolute;
+    right: -42px;
+    bottom: 36px;
+    opacity: 0;
+    -webkit-transform: scale(0.01);
+    -moz-transform: scale(0.01);
+    -ms-transform: scale(0.01);
+    -o-transform: scale(0.01);
+    transform: scale(0.01);
+    -webkit-transition: opacity 0.3s, transform 0.3s;
+    -moz-transition: opacity 0.3s, transform 0.3s;
+    -ms-transition: opacity 0.3s, transform 0.3s;
+    -o-transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 0.3s, transform 0.3s;
+}
+footer .footer_right .weixin:hover{
+    background-position: left -39px;
+}
+footer .footer_right .weixin:hover .weixinerweima{
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}

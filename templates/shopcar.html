@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/shopcar.css' %}">
+{% endblock %}
+
+{% block headerMiddel %}
+        <div class="inner clear">
+            <div class="header_logo fl"></div>
+            <div class="header_middle_right font14 clear fr">
+                <div class="step step_red">1 <span>1.我的购物车</span></div>
+                <div class="step">2 <span>2.填写核对订单</span></div>
+                <div class="step">3 <span>3.订单提交成功</span></div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block main %}
+<section class="shopcar inner">
+    <div class="hr15"></div>
+    <h3 class="shopcar_tit">我的购物车</h3>
+    <div class="shopcar_con">
+        <div class="shopcar_head gradient">
+            <!--<div class="shopcar_item choose">选择</div>-->
+            <div class="shopcar_item pro_name">商品名称</div>
+            <div class="shopcar_item pro_price">现价</div>
+            <div class="shopcar_item pro_liprice">原价</div>
+            <div class="shopcar_item pro_num">数量</div>
+            <div class="shopcar_item pro_subtotal">小计</div>
+            <div class="shopcar_item pro_edit">编辑</div>
+        </div>
+        {% for car in CarItem_list %}
+        <div class="shopcar_pro_con clear">
+            <!--<div class="shopcar_item choose"><input type="checkbox" /></div>-->
+            <div class="shopcar_item pro_name clear">
+                <div class="shopcar_pro_img fl"><img src="/uploads/{{ car.product.image }}" alt=""/></div>
+                <div class="shopcar_pro_name fl"><a href="#">{{ car.product.name }}</a></div>
+            </div>
+            <div class="shopcar_item pro_price">{{ car.product.price|floatformat:"2" }}</div>
+            <div class="shopcar_item pro_liprice">{{ car.product.old_price|floatformat:"2" }}</div>
+            <div class="shopcar_item pro_num">
+                <div class='des_number'>
+                    <div class='reduction click' >-</div>
+                    <div class="des_input">
+                        <input type="text" value="1">
+                    </div>
+                    <div class="plus click">+</div>
+                </div>
+            </div>
+            <div class="shopcar_item pro_subtotal">{{ car.total|floatformat:"2" }}</div>
+            <div class="shopcar_item pro_edit"><a href="#">删除</a></div>
+        </div>
+        {% endfor %}
+
+        <div class="hr25"></div>
+        <div class="shopcar_cont clear">
+            <!--<div class="all_choose fl"><label><input type="checkbox" /><span>全选</span></label></div>-->
+            <div class="fr">
+                <div class="shopcar_cont_money fl"><i>总计：</i><span></span></div>
+                <div class="shopcar_cont_btn fl"><input type="button" value="去结算"/></div>
+            </div>
+        </div>
+    </div>
+    <div class="hr25"></div>
+</section>
+
+<script>
+    //商品总价，总计的价格
+    var all_total = 0;
+    for( var i=1; i<$('.pro_subtotal').length; i++){
+        var total = parseFloat($('.pro_subtotal').eq(i).text().replace(/[^0-9]+.[0-9]{2}/ig,''));
+        all_total = all_total + total;
+    }
+    $('.shopcar_cont_money').find('span').text(all_total);
+
+    //商品数量加减
+    $('.des_number .plus').bind('click', function(){
+        var inputTxt = $(this).prev().children('input');
+        var num = parseInt(inputTxt.val());
+        inputTxt.val(num + 1);
+//        商品的现在的单价
+        var toprice = parseFloat($(this).parents('.pro_num').prev().prev().text().replace(/[^0-9]+.[0-9]{2}/ig,''));
+        subNum = parseInt(num + 1);
+        if(subNum< 0){
+            inputTxt.val(0);
+            $(this).prev().prev().addClass('des_number_btn');
+            subNum = parseInt(inputTxt.val());
+            var subPrice = parseInt($(this).parents('.pro_num').prev().prev().text());
+            var subTotal = parseInt(subPrice*subNum);
+            $(this).parents('.pro_num').next().text(subTotal);
+        }else{
+            $(this).prev().prev().removeClass('des_number_btn');
+            var subPrice = parseInt($(this).parents('.pro_num').prev().prev().text());
+            var subTotal = parseInt(subPrice*subNum);
+            $(this).parents('.pro_num').next().text(subTotal);
+
+            all_total = all_total + toprice;
+            $('.shopcar_cont_money').find('span').text(all_total);
+
+        }
+    });
+    $('.des_number .reduction').click(function(){
+        var inputTxt = $(this).next().children('input');
+        var num = parseInt(inputTxt.val());
+        inputTxt.val(num - 1);
+        var toprice = parseFloat($(this).parents('.pro_num').prev().prev().text().replace(/[^0-9]+.[0-9]{2}/ig,''));
+        subNum = parseInt(num - 1);
+        if(subNum< 0){
+            inputTxt.val(0);
+            $(this).addClass('des_number_btn');
+            subNum = parseInt(inputTxt.val());
+            var subPrice = parseInt($(this).parents('.pro_num').prev().prev().text());
+            var subTotal = parseInt(subPrice*subNum);
+            $(this).parents('.pro_num').next().text(subTotal);
+        }else{
+            $(this).removeClass('des_number_btn');
+            var subPrice = parseInt($(this).parents('.pro_num').prev().prev().text());
+            var subTotal = parseInt(subPrice*subNum);
+            $(this).parents('.pro_num').next().text(subTotal);
+
+            all_total = all_total - toprice;
+            $('.shopcar_cont_money').find('span').text(all_total);
+        }
+    });
+
+
+    //删除购物车中的一条信息
+    var del = $('.pro_edit').children('a');
+    del.click(function(){
+        $(this).parent().parent().remove();
+    })
+
+</script>
+
+{% endblock %}

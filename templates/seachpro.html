@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/seachpro.css' %}">
+{% endblock %}
+
+{% block headerMiddel %}
+        <div class="inner clear">
+            <div class="header_logo fl"></div>
+            <div class="header_middle_right font14 clear fr">
+                <div class="header_seach fl">
+                    <form action="#" id="seach" class="header_seach_box clear color65">
+                        <input type="text" class="search_txt fl" value="请输入要搜索的内容。。。"/>
+                        <input type="button" class="search_btn colorff fl" value="搜索"/>
+                    </form>
+                </div>
+                <div class="header_shop gradient text-center fr">
+                    <span class="glyphicon glyphicon-shopping-cart font16 colore21"></span>
+                    <a href="/shopcar" class="shoptxt">购物车</a>
+                    <span class="glyphicon glyphicon-menu-right font12"></span>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block nav %}
+    <nav>
+        <div class="inner clear">
+            <ul class="nav_menu fl">
+                <li class="colorff text-center"><h3 class="font14">全部商品分类<span class="glyphicon glyphicon-chevron-down"></span></h3></li>
+                <li class="active"><a href="/">首页</a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block main %}
+<section class="inner clear">
+    <div class="hr15"></div>
+    <div class="seachpro_left fl clear">
+        {% for procat in shopcat_list %}
+        {% ifchanged procat.proname  %}
+        <div class="seachpro_left_nav">
+            <h3 class="font14 text-center weight">{{ procat.proname }}</h3>
+            {% for subprocat in shopcat_list %}
+            {% ifequal procat.proname subprocat.proname %}
+            <div class="seachpro_left_con">
+                <h3 class="font14 weight">{{ subprocat.name }}</h3>
+                <ul>
+                    <li><a href="#">光面</a></li>
+                    <li><a href="#">花纹</a></li>
+                </ul>
+            </div>
+            {% endifequal %}
+            {% endfor %}
+        </div>
+        <div class="hr15"></div>
+        {% endifchanged %}
+        {% endfor %}
+    </div>
+    <div class="seachpro_right fr clear">
+        <div class="screening_box">
+            {% for cat in shopcat_list %}{% ifchanged cat.name %}
+            <dl class="screening clear">
+                <dt>{{ cat.name }}</dt>
+                <dd class="limit"><a href="#" class="active">不限</a></dd>
+                <dd class="screening_list">
+                    <ul class="clear">
+                        {% for catpro in shopcat_list %}{% ifequal catpro.name cat.name %}
+                        <li><a href="#">{{ catpro.name }}/{{ catpro.proname }}</a></li>
+                        {% endifequal %}{% endfor %}
+
+                    </ul>
+                </dd>
+            </dl>
+            {% endifchanged %}
+            {% endfor %}
+            <dl class="screening clear">
+                <dt>更多选项</dt>
+                <dd class="screening_list">
+                    <div class="screen_more">
+                        <a href="#">Samsung/三星</a>
+                    </div>
+                    <div class="screen_more">
+                        <a href="#">三星三星三星三星三星三星三星</a>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="hr15"></div>
+        <div class="addInfo">
+            <div class="address">
+                <span class="add_text">送至</span>
+                <div class="select">
+                    <h3>海淀区五环内</h3><span></span>
+                    <ul class="show_select">
+                        <li>上帝</li>
+                        <li>五道口</li>
+                        <li>上帝</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fr screen_text">
+				<span class="check">
+					<input type="checkbox" id="check"><label for="check">仅显示有货</label>
+				</span>
+				<span class="shop_number">
+					共<em>11123</em>件
+				</span>
+            </div>
+        </div>
+        <div class="products_list screening_list_more clear">
+            <div class="hr15"></div>
+            {% for pro in shoppro_list %}
+            <div class="item">
+                <div class="item_cont">
+                    <div class="img_item">
+                        <a href="#"><img src="/uploads/{{ pro.image }}" alt=""></a>
+                    </div>
+                    <p class="item_namedes"><a href="#">{{ pro.name }}-{{ pro.desc }}</a></p>
+                    <p class="money">￥{{ pro.price }}</p>
+                    <p><a href="#" class="addCar">加入购物车</a></p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="hr25"></div>
+
+        <div id="pagination" class="page">
+            {% if article_list.has_previous %}
+                <a class="previous" href="?page={{ shoppro_list.previous_page_number }}{% if request.GET.year %}&year={{ request.GET.year }}{% endif %}{% if request.GET.month %}&month={{ request.GET.month }}{% endif %}{% if request.GET.cid %}&cid={{ request.GET.cid }}{% endif %}">上一页</a>
+            {% else %}
+                <a class="previous-off">上一页</a>
+            {% endif %}
+            <a href="#">{{ shoppro_list.number }}</a>
+            {% if shoppro_list.has_next %}
+              <a class='next' href="?page={{ shoppro_list.next_page_number }}{% if request.GET.year %}&year={{ request.GET.year }}{% endif %}{% if request.GET.month %}&month={{ request.GET.month }}{% endif %}{% if request.GET.cid %}&cid={{ request.GET.cid }}{% endif %}">下一页</a>
+            {% else %}
+              <a class="next-off">下一页</a>
+            {% endif %}
+            <span class="morePage">共{{shoppro_list.paginator.num_pages}}页，到第</span><input type="text" class="pageNum"><span class="ye">页</span><a class="page_btn" style="width:60px;">确定</a>
+        </div>
+    </div>
+</section>
+<div class="hr25"></div>
+<script>
+    //跳转到某一页
+    $('#pagination .page_btn').click(function(){
+        var pageNum = $(this).prev().prev().val();
+        $(this).attr('href', '?page='+pageNum);
+    })
+</script>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="{% static 'css/reset.css' %}" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="{% static 'css/reg.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="main">
+		<div class="header" >
+			<h1>注册一个新的用户!</h1>
+		</div>
+		<p></p>
+			<form action="{% url 'reg' %}" method="post">
+				{% csrf_token %}
+				<ul class="left-form clear">
+					<h2>注册新用户:</h2>
+					<li>
+						{{ reg_form.username }}
+						<div class="clear"> </div>
+					</li> 
+					<li>
+						{{ reg_form.email }}
+						<div class="clear"> </div>
+					</li> 
+					<li>
+						{{ reg_form.password }}
+						<div class="clear"> </div>
+					</li> 
+					<li>
+						{{ reg_form.password }}
+						<div class="clear"> </div>
+					</li>
+					<li>
+						<label><input type="radio" name="sex">男</label>
+						<label><input type="radio" name="sex">女</label>
+						<label><input type="radio" name="sex">保密</label>
+						<div class="clear"></div>
+					</li>
+					<input type="hidden" name="source_url" value="{{ request.META.HTTP_REFERER }}">
+					<input type="submit" value="注册">
+					<div class="clear"> </div>
+				</ul>
+
+			</form>
+	</div>
+</body>
+</html>

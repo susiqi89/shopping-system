@@ -1,0 +1,115 @@
+*{
+    padding:0;
+    margin: 0;
+}
+body,div,h1,h2,h3,h4,h5,h6,p,ul,li,ol,form,input,a,img{
+    padding:0; margin:0;
+}
+ul, ol, li{
+    list-style: none;;
+}
+a{
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    color: #656565;
+}
+a:hover{
+    color: #ea7a7a;
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
+img{
+    border: none;
+    outline: none;
+}
+input, button{
+    border: none;
+    outline: none;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    font-family: 'Microsoft Yahei', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.clear{
+    zoom: 1;
+}
+.clear:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.inner{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.gradient{
+    background: linear-gradient(top, #FFFFFF, #f8f8f8);
+    background:-moz-linear-gradient(top, #FFFFFF, #f8f8f8);
+    background: -webkit-linear-gradient(top, #FFFFFF, #f8f8f8);
+    background:-ms-linear-gradient(top, #FFFFFF, #f8f8f8);
+    -ms-filter:"progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#FFFFFF, endColorstr=#f8f8f8)";
+    +background: #F9F9F9;
+}
+.font12{
+    font-size: 12px;
+}
+.font14{
+    font-size: 14px;
+}
+.font16{
+    font-size: 16px;
+}
+.font18{
+    font-size: 18px;
+}
+.font24{
+    font-size: 24px;
+}
+.weight{
+    font-weight: bold;
+}
+.colorff{
+    color: #FFFFFF;
+}
+.color65{
+    color: #656565;
+}
+.colora5{
+    color: #a5a5a5;
+}
+.colore21{
+    color: #e21c01;
+}
+.hr15{
+    height: 15px;
+    overflow: hidden;
+}
+.hr25{
+    height: 25px;
+}
+.hr45{
+    height: 45px;
+}
+
+.select{border:1px solid #999; height: 22px; line-height: 22px; background:#fff; padding: 0 20px 0 10px; position:relative; z-index: 4; float:left; }
+.select h3{line-height:20px; font-size:12px; }
+.select span{ width:20px; height:100%; position:absolute; right:0; top:0; background:url("../images/icon/sj_blue.jpg") no-repeat center;}
+.show_select{width:100%; background:#fff; border:1px solid #999; position:absolute; left:-1px; top:22px; display:none;}
+.show_select li{ padding-left:10px;}

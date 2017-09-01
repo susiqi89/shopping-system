@@ -1,0 +1,101 @@
+.clear{clear:both;}/* clear float */
+.main{
+	margin:7em auto 0;
+	width:80%;
+	background: #fff;
+}
+.header {
+	text-align:center;
+	padding:1.3em;
+}
+.header h1 {
+	color:#272727;
+	font-weight:700;
+	font-size:22px;
+}
+.main p{
+	text-align: center;
+	font-size:15px;
+	font-weight:600;
+	color:#383737;
+	padding: 20px 30px;
+	border-bottom: 1px solid #E7E0E0;
+	margin-top: -13px;
+}
+.main h2{
+	text-align:left;
+	font-size:17px;
+	font-weight:600;
+	margin:15px 3px;
+	color:#3F3D3D;
+}
+.left-form input[type=text],.left-form input[type=email],.left-form input[type=password] {
+	float:left;
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	width:80%;
+	padding: 0.7em 2em 0.7em 1em;
+	border:none;
+	color: #000;
+	font-size:15px;
+	outline: none;
+}
+.left-form label{
+	float: left;
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 0.7em 2em 0.7em 1em;
+	border:none;
+	color: #000;
+	font-size:15px;
+	outline: none;
+}
+.left-form li{
+	display:block;
+	color:#4D4949;
+	border:1px solid #EBEBEB;
+	border-radius: 0.3em;
+	-webkit-border-radius:0.3em;
+  	-moz-border-radius:0.3em;
+ 	 -o-border-radius:0.3em;
+ 	 margin-bottom: 10px;
+}
+.icon
+{
+	height:28px;
+	width:28px;
+	background:url(../images/spirit.png)  no-repeat;
+	display: block;
+	float: right;
+	margin: 7px 9px 9px 0px;
+}
+.ticker{
+	background:url(../images/spirit.png)  no-repeat 0px 0px;
+}
+.into{
+	background:url(../images/spirit.png)  no-repeat -31px 0px;
+}
+.left-form input[type=submit]{
+  padding:10px 19px;
+  border-radius:0.3em;
+ -webkit-border-radius:0.3em;
+  -moz-border-radius:0.3em;
+  -o-border-radius:0.3em;
+   color:#4D4949;
+  background:#F3F3F3;
+  border:1px solid #EBEBEB;
+  font-weight:bold;
+  font-size:15px;
+  outline:none;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  margin-top:15px;
+  cursor: pointer;
+}
+input[type=submit]:hover {
+ background:#2E2D2D;
+ color:#fff;
+
+}
+

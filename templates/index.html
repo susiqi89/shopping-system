@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block headerMiddel %}
+        <div class="inner clear">
+            <div class="header_logo fl"></div>
+            <div class="header_middle_right font14 clear fr">
+                <div class="header_seach fl">
+                    <form action="#" id="seach" class="header_seach_box clear color65">
+                        <input type="text" class="search_txt fl" value="请输入要搜索的内容。。。"/>
+                        <input type="button" class="search_btn colorff fl" value="搜索"/>
+                    </form>
+                </div>
+                <div class="header_shop gradient text-center fr">
+                    <span class="glyphicon glyphicon-shopping-cart font16 colore21"></span>
+                    <a href="/shopcar" class="shoptxt">购物车</a>
+                    <span class="glyphicon glyphicon-menu-right font12"></span>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block nav %}
+    <nav>
+        <div class="inner clear">
+            <ul class="nav_menu fl">
+                <li class="colorff text-center"><h3 class="font14">全部商品分类<span class="glyphicon glyphicon-chevron-down"></span></h3></li>
+                <li class="active"><a href="/">首页</a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+            <div class="shop_class_show" id="navList">
+                <ul>
+                    {% for catcon in shopcat_list %}
+                    {% ifchanged catcon.name %}
+                    <li>
+                        <div class="nav_list_area colorff">
+                            <h5>{{ catcon.name }}</h5>
+                            {% for cat in shopcat_list %}
+                            {% ifequal cat.name catcon.name %}
+                            <span>{{ cat.proname }}</span>
+                            {% endifequal %}
+                            {% endfor %}
+
+                        </div>
+                        <div class="nav_list_con">
+                            <div class="nav_list_fenle">
+                                <h4 class="font18 colore21 weight">分类目录</h4>
+                                <ul class="clear">
+                                    {% for cat in shopcat_list %}
+                                    {% ifequal cat.name catcon.name %}
+                                    <li><a href="#">{{ cat.proname }}</a></li>
+                                    {% endifequal %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="nav_list_rexiao">
+                                <h4 class="font18 colore21 weight">热销商品</h4>
+                                <ul>
+                                    {% for pro in shoppro_list %}
+                                    {% if pro.is_bestseller  %}
+                                    <li><a href="#"><em>{{ pro.name }}</em> <span></span><i><nobr>{{ pro.desc }}</nobr></i></a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    {% endifchanged %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block main %}
+<section>
+    <div class="banner inner">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!--<ol class="carousel-indicators">-->
+                <!--<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>-->
+                <!--<li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>-->
+            <!--</ol>-->
+            <div class="carousel-inner" role="listbox">
+                {% for ad in ad_list %}
+                <div class="item">
+                    <img src="/uploads/{{ ad.image_url }}" width="980" height="420" alt="">
+                    <div class="carousel-caption">
+                        <h2>{{ ad.title }}</h2>
+                        <p>{{ ad.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a href="#carousel-example-generic" class="left carousel-control" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a href="#carousel-example-generic" class="right carousel-control" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <script>
+        $('.banner .carousel-inner .item').eq(0).addClass('active');
+    </script>
+
+    <div class="inner shopcon">
+        {% for cat in shopcat_list %}
+        {% ifchanged cat.name %}
+        <div class="shopcon_men">
+            <div class="shopcon_left clear">
+                <div class="shopcon_left_title fl">
+                    <div><img src="{% static 'images/shopcon/shopcon_con_title1.jpg' %}" alt=""/></div>
+                    <div class="shopcon_left_txt colorff">
+                        <h5 class="fon18">{{ cat.name }}</h5>
+                        <p>{{ cat.desc }}</p>
+                        <a href="#" class="colorff font14">详情 ></a>
+                    </div>
+                </div>
+                <ul class="shopcon_con_list clear fl">
+                    {% for pro in shoppro_list %}
+                    <li>
+                        <div class="shopcon_con_list1">
+                            <div class="img"><img src="uploads/{{ pro.image }}" alt="" /></div>
+                            <div class="shopcon_conlist_box">
+                                <h4 class="font14"><a id="prohref" href="/products/{{ pro.slug}}"><nobr>{{ pro.name }}</nobr></a></h4>
+                                <p class="colora5 font12">{{ pro.desc }}</p>
+                            </div>
+                            <div class="shopcon_conlist_bottom colore21 font12">￥{{ pro.price}}</div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endifchanged %}
+        {% endfor %}
+    </div>
+</section>
+<script>
+    $('.shopcon_con_list>li').click(function(){
+        var prohref = $(this).find('#prohref').attr('href');
+        location.href = prohref;
+    })
+</script>
+{% endblock %}}
